@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-f0 = 100
+f0 = 5
 w0 = 2*np.pi*f0
-tf = signal.lti( [ 1/((w0)**2), 0,1 ], [ 1/((w0)**2), 9.9/(w0), 1 ] )
+tf = signal.lti( [ 1/((w0)**2), 0,0 ], [ 1/((w0)**2), 1.414/(w0), 1 ] )
 
 omega, gain, phase = tf.bode()
 
@@ -22,9 +22,9 @@ plot_gain.axvline(x=w0, color='black', linestyle='--')
 plot_gain.text(w0, 2.5, r'$\omega_0 = 2\pi \times 100$', ha='center')#, transform=plot_gain.transAxes)
 
 color = 'tab:red'
-plot_phase = plot_gain.twinx()
-plot_phase.semilogx(omega, phase, color=color)
-plot_phase.set_ylabel("Phase (°)", color=color)
-plot_phase.tick_params(axis='y', labelcolor=color)
+#plot_phase = plot_gain.twinx()
+#plot_phase.semilogx(omega, phase, color=color)
+#plot_phase.set_ylabel("Phase (°)", color=color)
+#plot_phase.tick_params(axis='y', labelcolor=color)
 
 plt.show()
